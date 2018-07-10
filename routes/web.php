@@ -19,4 +19,5 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/feed', 'FeedController@index')->name('feed');
+Route::get('/feed/{id}/podcast', 'FeedController@podcast')->name('podcast');
 Route::post('/feed/cadastrar', 'FeedController@cadastrar')->name('cadastrar_feed');

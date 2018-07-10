@@ -1,0 +1,19 @@
+.escondido{
+  /* visibility: hidden; */
+  display: none;
+  opacity: 0.9;
+}
+
+.block-with-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  font-size: 12px;
+}
+
+
+.zoom:hover {
+    transform: scale(1.3); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+</style>

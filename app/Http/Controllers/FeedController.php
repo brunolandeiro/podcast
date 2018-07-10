@@ -42,4 +42,18 @@ class FeedController extends Controller
             return redirect('feed')->with('status', $e->getMessage());
         }
     }
+
+    public function podcast($id){
+      try{
+        $podcast = \App\Feed::find($id);
+        $feed  = file_get_contents($podcast->url);
+        $rss = simplexml_load_string($feed);
+        return view('feed.podcast',[],[
+          'podcast' => $podcast,
+          'rss' => $rss
+        ]);
+      }catch(\Exception $e){
+        return redirect('/')->with('status', $e);
+      }
+    }
 }
