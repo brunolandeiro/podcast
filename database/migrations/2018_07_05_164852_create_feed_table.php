@@ -19,6 +19,7 @@ class CreateFeedTable extends Migration
             $table->string('title',255);
             $table->longText('description');
             $table->string('image',255);
+            $table->integer('destaque')->default(0);
         });
     }
 

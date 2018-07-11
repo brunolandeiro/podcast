@@ -18,6 +18,12 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/feed', 'FeedController@index')->name('feed');
-Route::get('/feed/{id}/podcast', 'FeedController@podcast')->name('podcast');
-Route::post('/feed/cadastrar', 'FeedController@cadastrar')->name('cadastrar_feed');
+
+Route::group([
+    'prefix' => 'podcast',
+    'middleware' => ['auth']
+], function(){
+    Route::get('/novo', 'PodcastController@novo')->name('novo_podcast');
+    Route::post('/cadastrar', 'PodcastController@cadastrar')->name('cadastrar_podcast');
+    Route::get('/feed/{id}', 'PodcastController@feed')->name('feed');
+});

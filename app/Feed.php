@@ -13,6 +13,6 @@ class Feed extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
     protected $fillable = [
-        'url','title','description','image'
+        'url','title','description','image','destaque'
     ];
 }

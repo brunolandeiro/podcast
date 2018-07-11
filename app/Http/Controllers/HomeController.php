@@ -23,9 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $feeds = \App\Feed::all();
+        $podcasts_destaques = \App\Feed::where('destaque',2)->get();
+        $podcasts_delas = \App\Feed::where('destaque',1)->get();
         return view('home',[
-            'podcasts' => $feeds
+            'podcasts' => $podcasts_destaques,
+            'podcasts_delas' => $podcasts_delas
         ]);
     }
 }
