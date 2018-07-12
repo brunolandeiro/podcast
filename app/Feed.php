@@ -15,4 +15,9 @@ class Feed extends Model
     protected $fillable = [
         'url','title','description','image','destaque'
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
 }

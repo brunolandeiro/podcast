@@ -11,7 +11,7 @@
     <title>{{ config('app.name') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
     <!-- Add any other renderers you need; see Use Renderers for more information -->
 
@@ -38,14 +38,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Active</a>
+                        <li class="nav-item {{$active['destaques']}}">
+                            <a class="nav-link" href="{{route('home')}}">Destaques</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link {{$active['recentes']}}" href="#">Recentes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link {{$active['cadastrar_podcast']}}" href="{{route('novo_podcast')}}">Cadastrar Podcast</a>
                         </li>
                     </ul>
 
@@ -57,9 +57,12 @@
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Cadastrar-se') }}</a>
                             </li>
                         @else
+                            <li class="nav-item {{$active['inscricoes']}}">
+                                <a class="nav-link" href="{{route('inscricoes')}}">Inscrições</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

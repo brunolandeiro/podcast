@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 class PodcastController extends Controller
 {
     public function novo(){
-        return view('podcast.novo');
+        return view('podcast.novo',[],[
+            'active'=> activate('cadastrar_podcast')
+        ]);
     }
 
     public function cadastrar(Request $request){
@@ -38,7 +40,8 @@ class PodcastController extends Controller
         $rss = simplexml_load_string($feed);
         return view('podcast.feed',[],[
           'podcast' => $podcast,
-          'rss' => $rss
+          'rss' => $rss,
+          'active' => activate('nenhum')
         ]);
       }catch(\Exception $e){
         return redirect('/')->with('status', $e);

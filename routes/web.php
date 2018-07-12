@@ -21,9 +21,9 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::group([
     'prefix' => 'podcast',
-    'middleware' => ['auth']
 ], function(){
     Route::get('/novo', 'PodcastController@novo')->name('novo_podcast');
     Route::post('/cadastrar', 'PodcastController@cadastrar')->name('cadastrar_podcast');
     Route::get('/feed/{id}', 'PodcastController@feed')->name('feed');
 });
+Route::get('/inscricoes', 'InscritoController@index')->name('inscricoes');
