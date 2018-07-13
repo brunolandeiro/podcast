@@ -4,6 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+            @if(session('status'))
+            <p>{{session('status')}}</p>
+            @endif
             <div class="card">
                 <div class="card-body">
                     <h5 class="text-muted">Podcasts em destaque</h5>

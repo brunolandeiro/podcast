@@ -13,7 +13,7 @@
                         <div class="col-md-2">
                             <a href="#" data-toggle="modal" data-target="#{{$item->title}}">
                                 <div class="card">
-                                    <img class="card-img-top " src="{{$item['image']}}" alt="{{$item->title}}">
+                                    <img class="card-img-top " src="{{$item->image}}" alt="{{$item->title}}">
                                 </div>
                                 <p>{{$item->title}}</p>
                             </a>
@@ -30,7 +30,7 @@
                                     <!-- Modal body -->
                                     <div class="modal-body">
                                         <audio controls preload="metadata">
-                                            <source src="{{$item->enclosure['url']}}" type="{{$item->enclosure['type']}}">
+                                            <source src="{{$item->audio}}" type="{{$item->type}}">
                                         </audio>
                                     </div>
                                     <!-- Modal footer -->
@@ -43,6 +43,7 @@
                         @endforeach
                     </div>
                     @endforeach
+
                 </div>
             </div>
         </div>

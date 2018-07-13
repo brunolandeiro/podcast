@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class PodcastController extends Controller
@@ -38,13 +39,40 @@ class PodcastController extends Controller
         $podcast = \App\Feed::find($id);
         $feed  = file_get_contents($podcast->url);
         $rss = simplexml_load_string($feed);
+        if(Auth::user()){
+            $ja_e_assinante = \App\FeedUser::where('user_id',Auth::id())
+            ->where('feed_id',$id)
+            ->first();
+        }else{
+            $ja_e_assinante = FALSE;
+        }
         return view('podcast.feed',[],[
           'podcast' => $podcast,
           'rss' => $rss,
+          'ja_e_assinante' => $ja_e_assinante,
           'active' => activate('nenhum')
         ]);
       }catch(\Exception $e){
-        return redirect('/')->with('status', $e);
+        return redirect('/')->with('status', $e->getMessage());
       }
     }
+
+    public function assinar($id){
+        if(Auth::user()){
+            $ja_e_assinante =\App\FeedUser::where('user_id',Auth::id())
+            ->where('feed_id',$id)
+            ->first();
+            if(!$ja_e_assinante){
+                $data['user_id'] = Auth::id();
+                $data['feed_id'] = $id;
+                \App\FeedUser::create($data);
+            }else{
+                $ja_e_assinante->delete();
+            }
+            return redirect()->action('PodcastController@feed',['id'=>$id]);
+        }else{
+            return redirect()->route('login');
+        }
+    }
+
 }

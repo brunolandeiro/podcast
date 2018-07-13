@@ -13,8 +13,12 @@
                 <img class="card-img-top " src="{{$podcast->image}}" alt="{{$podcast->title}}">
                 <div class="card-body">
                     <h4 class="card-title">{{$podcast->title}}</h4>
-                    <a href="#" class="btn btn-primary">Assinar</a>
-                    <p class="card-text"><?php echo description_decode($podcast->description)?></p>
+                    @if($ja_e_assinante)
+                        <a href="{{route('assinar',['id'=>$podcast->id])}}" class="btn btn-danger">Deixar de Assinar</a>
+                    @else
+                        <a href="{{route('assinar',['id'=>$podcast->id])}}" class="btn btn-primary">Assinar</a>
+                    @endif
+                    <br><br><p class="card-text"><?php echo description_decode($podcast->description)?></p>
                 </div>
             </div>
 
