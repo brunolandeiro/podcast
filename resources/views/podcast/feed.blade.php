@@ -13,8 +13,8 @@
                 <img class="card-img-top " src="{{$podcast->image}}" alt="{{$podcast->title}}">
                 <div class="card-body">
                     <h4 class="card-title">{{$podcast->title}}</h4>
-                    <p class="card-text"><?php echo description_decode($podcast->description)?></p>
                     <a href="#" class="btn btn-primary">Assinar</a>
+                    <p class="card-text"><?php echo description_decode($podcast->description)?></p>
                 </div>
             </div>
 

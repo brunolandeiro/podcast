@@ -25,6 +25,7 @@ class InscritoController extends Controller
             $feed  = file_get_contents($podcast->url);
             $rss = simplexml_load_string($feed);
             foreach($rss->channel->item as $i){
+                $i->addAttribute('image',$podcast->image);
                 array_push($items,$i);
             }
         }
@@ -32,7 +33,7 @@ class InscritoController extends Controller
         $items_sorted = order_by_pubDate($items);
         return view('inscrito.index',[],[
             'usuario'=> $usuario,
-            'rss' => $items_sorted,
+            'rss' => collect($items_sorted),
             'active'=> activate('inscricoes')
         ]);
     }

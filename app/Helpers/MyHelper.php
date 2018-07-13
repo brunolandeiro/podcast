@@ -2,12 +2,7 @@
 if (! function_exists('activate')) {
     function activate($ativo)
     {
-        $links=[
-            'destaques'=>'',
-            'recentes'=>'',
-            'cadastrar_podcast'=>'',
-            'inscricoes'=>''
-        ];
+        $links = Config::get('constants.links');
         $links[$ativo]='active';
         return $links;
     }

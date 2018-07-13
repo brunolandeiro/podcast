@@ -26,6 +26,7 @@
 </head>
 <body>
     <div id="app">
+        <?php isset($active)?"Não faz nada":$active=Config::get('constants.links'); ?>
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
