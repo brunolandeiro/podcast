@@ -75,4 +75,18 @@ class PodcastController extends Controller
         }
     }
 
+    public function cadastrados(){
+        $podcasts = \App\Feed::paginate(6);
+        return view('podcast.cadastrados',['podcasts'=>$podcasts],['active' => activate('recentes')]);
+    }
+
+    public function resultado(Request $request){
+        $title = "%".$request->title."%";
+        $podcasts = DB::table('feed')
+                ->where('title', 'like', $title)
+                ->orWhere('description','like',$title)
+                ->get();
+        return view('podcast.resultado',[],['podcasts'=>$podcasts,'active' => activate('recentes')]);
+    }
+
 }

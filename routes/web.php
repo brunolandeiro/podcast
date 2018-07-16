@@ -24,7 +24,9 @@ Route::group([
 ], function(){
     Route::get('/novo', 'PodcastController@novo')->name('novo_podcast');
     Route::post('/cadastrar', 'PodcastController@cadastrar')->name('cadastrar_podcast');
+    Route::post('/resultado', 'PodcastController@resultado')->name('resultado');
+    Route::get('/cadastrados', 'PodcastController@cadastrados')->name('cadastrados');
     Route::get('/feed/{id}', 'PodcastController@feed')->name('feed');
     Route::get('/assinar/{id}', 'PodcastController@assinar')->name('assinar');
 });
-Route::get('/inscricoes', 'InscritoController@index')->name('inscricoes');
+Route::get('/inscricoes/{page}', 'InscritoController@index')->name('inscricoes');

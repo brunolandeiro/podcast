@@ -43,7 +43,7 @@
                             <a class="nav-link" href="{{route('home')}}">Destaques</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{$active['recentes']}}" href="#">Recentes</a>
+                            <a class="nav-link {{$active['recentes']}}" href="{{route('cadastrados')}}">Cadastrados</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{$active['cadastrar_podcast']}}" href="{{route('novo_podcast')}}">Cadastrar Podcast</a>
@@ -62,7 +62,7 @@
                             </li>
                         @else
                             <li class="nav-item {{$active['inscricoes']}}">
-                                <a class="nav-link" href="{{route('inscricoes')}}">Inscrições</a>
+                                <a class="nav-link" href="{{route('inscricoes',['page'=>1])}}">Assinaturas</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

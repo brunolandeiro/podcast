@@ -7,6 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="text-muted">Episodios</h5>
+                    <hr>
                     @foreach($rss->chunk(6) as $chunk)
                     <div class="row">
                         @foreach ($chunk as $item)
@@ -44,6 +45,25 @@
                     </div>
                     @endforeach
 
+                </div>
+                <div class="card-footer">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="{{route('inscricoes',['page'=>$page_previous])}}"><</a></li>
+                        @foreach($pages_links as $p)
+                        @if($page == $p)
+                        <li class="page-item active"><a class="page-link" href="{{route('inscricoes',['page'=>$p])}}">{{$p}}</a></li>
+                        @else
+                        <li class="page-item"><a class="page-link" href="{{route('inscricoes',['page'=>$p])}}">{{$p}}</a></li>
+                        @endif
+                        @endforeach
+                        <li class="page-item"><a class="page-link" href="">...</a></li>
+                        @if($page == $page_final)
+                        <li class="page-item active"><a class="page-link" href="{{route('inscricoes',['page'=>$page_final])}}">{{$page_final}}</a></li>
+                        @else
+                        <li class="page-item"><a class="page-link" href="{{route('inscricoes',['page'=>$page_final])}}">{{$page_final}}</a></li>
+                        @endif
+                        <li class="page-item"><a class="page-link" href="{{route('inscricoes',['page'=>$page_next])}}">></a></li>
+                    </ul>
                 </div>
             </div>
         </div>
