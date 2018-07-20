@@ -33,13 +33,42 @@
                 </div>
                 @foreach($rss->channel->item as $item)
                 <li class="list-group-item">
-                    <button type="button" class="btn btn-outline-primary btn-circle play" data-audio="{{$item->enclosure['url']}}" data-type="{{$item->enclosure['type']}}" data-title="{{$item->title}}"><i class="fa fa-play"></i></button>
+                    <button type="button" class="btn btn-outline-primary btn-circle"
+                        data-toggle="modal" data-target="#{{$item->title}}">
+                        <i class="fa fa-play"></i>
+                    </button>
                     <span>{{$item->title}}</span>
                 </li>
+                <!-- The Modal -->
+                <div class="modal" id="{{$item->title}}">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">{{$item->title}}</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <audio controls preload="metadata">
+                                    <source src="{{$item->enclosure['url']}}" type="{{$item->enclosure['type']}}">
+                                </audio>
+                                <div class="container" style="font-size: 16px;">
+                                    <br>
+                                    <?php echo mytheme_nl2p($item->description,FALSE);  ?>
+                                </div>
+                            </div>
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 @endforeach
             </ul>
         </div>
     </div>
 </div>
-<script src="{{ asset('js/player.js') }}"></script>
+<!-- <script src="{{ asset('js/player.js') }}"></script> -->
 @endsection

@@ -21,7 +21,7 @@
                         </div>
                         <!-- The Modal -->
                         <div class="modal" id="{{$item->title}}">
-                            <div class="modal-dialog">
+                            <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <!-- Modal Header -->
                                     <div class="modal-header">
@@ -33,10 +33,14 @@
                                         <audio controls preload="metadata">
                                             <source src="{{$item->audio}}" type="{{$item->type}}">
                                         </audio>
+                                        <div class="container" style="font-size: 16px;">
+                                            <br>
+                                            <?php echo $item->description  ?>
+                                        </div>
                                     </div>
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
                                     </div>
                                 </div>
                             </div>

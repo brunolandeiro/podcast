@@ -9,7 +9,7 @@
             @endif
             <div class="card">
                 <div class="card-body">
-                    <h5 class="text-muted">Podcasts em destaque Teste</h5>
+                    <h5 class="text-muted">Podcasts em destaque</h5>
                   @foreach ($podcasts->chunk(6) as $chunk)
                       <div class="row">
                           @foreach ($chunk as $podcast)

@@ -91,5 +91,12 @@
             @yield('content')
         </main>
     </div>
+    <!-- <footer class="footer bg-info">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="text-light">Bruno Landeiro</div>
+            </div>
+        </div>
+    </footer> -->
 </body>
 </html>

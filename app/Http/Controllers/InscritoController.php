@@ -31,7 +31,7 @@ class InscritoController extends Controller
                 $item_model = new \App\Podcast;
                 $item_model->url = $podcast->url;
                 $item_model->title = $i->title;
-                $item_model->description = $i->description;
+                $item_model->description = mytheme_nl2p($i->description,FALSE);
                 $item_model->image = $podcast->image;
                 $item_model->audio = $i->enclosure['url'];
                 $item_model->type = $i->enclosure['type'];

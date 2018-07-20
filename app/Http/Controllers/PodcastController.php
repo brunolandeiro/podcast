@@ -15,7 +15,7 @@ class PodcastController extends Controller
 
     public function cadastrar(Request $request){
         try {
-            $feed  = file_get_contents($request->url);
+            $feed = file_get_contents($request->url);
             $rss = simplexml_load_string($feed);
             if($rss===FALSE){
                 return redirect('feed')->with('status', 'url Invalida');
@@ -76,7 +76,7 @@ class PodcastController extends Controller
     }
 
     public function cadastrados(){
-        $podcasts = \App\Feed::paginate(6);
+        $podcasts = \App\Feed::paginate(36);
         return view('podcast.cadastrados',['podcasts'=>$podcasts],['active' => activate('recentes')]);
     }
 
@@ -84,9 +84,12 @@ class PodcastController extends Controller
         $title = "%".$request->title."%";
         $podcasts = DB::table('feed')
                 ->where('title', 'like', $title)
-                ->orWhere('description','like',$title)
+                ->orWhere('description','like', $title)
                 ->get();
-        return view('podcast.resultado',[],['podcasts'=>$podcasts,'active' => activate('recentes')]);
+        return view('podcast.resultado',[],[
+            'podcasts'=>$podcasts,
+            'active' => activate('recentes')
+        ]);
     }
 
 }
